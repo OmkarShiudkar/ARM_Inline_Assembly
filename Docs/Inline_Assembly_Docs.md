@@ -39,3 +39,17 @@
 ```asm
 MRS R0, CONTROL     ; Read CONTROL into R0  
 MSR CONTROL, R1     ; Write R1 into CONTROL  
+
+### Inline Assembly Syntax
+
+**Basic Structure - 
+
+'''asm
+
+__asm volatile (
+    "instruction1 \n"
+    "instruction2 \n"
+    : [outputs]  // "=r" (c_var)
+    : [inputs]   // "r" (c_var)
+    : [clobbers] // "r0", "memory"
+);
