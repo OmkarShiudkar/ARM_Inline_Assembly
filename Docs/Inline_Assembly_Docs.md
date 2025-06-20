@@ -5,10 +5,9 @@
 2. [Register Set](#register-set)
 3. [Inline Assembly Syntax](#inline-assembly-syntax)
 4. [Common Instructions](#common-instructions)
-5. [Memory Access](#memory-access)
-6. [Control Registers](#control-registers)
-7. [Examples](#examples)
-8. [Best Practices](#best-practices)
+5. [Control Registers](#control-registers)
+6. [Examples](#examples)
+7. [Best Practices](#best-practices)
 
 ---
 
@@ -35,23 +34,48 @@
 | BASEPRI     | -     | Base priority mask register         |
 | CONTROL     | -     | Privilege and stack control         |
 
-### Inline Assembly Syntax
+## Inline assembly syntax
 
-**Basic Structure - 
+**Basic Structure** - 
 
-'''asm
+```asm
 
 __asm volatile (
     "instruction1 \n"
     "instruction2 \n"
-    : [outputs]  // "=r" (c_var)
-    : [inputs]   // "r" (c_var)
-    : [clobbers] // "r0", "memory"
+    : [output operands]  /* Optional */
+    : [input operands]   /* Optional */
+    : [clobber list]     /* Optional */
 );
+
+```
+
+| Constraint  | Purpose                             |
+|-------------|-------------------------------------|
+| "=r"        |     Write-only register             |
+| "+r"        |     Read-write register             |
+| "r"         | 	Input register                  |
+| "m"         |     Memory operand                  |
+
 
 ### Special Register Access:
 ```asm
 MRS R0, CONTROL     ; Read CONTROL into R0  
 MSR CONTROL, R1     ; Write R1 into CONTROL  
 
-'''
+```
+### common-instructions:
+
+| Instruction    | Example | Description                             |
+|-------------|-------|-------------------------------------|
+| MOV     | MOV R0, #42   | Move immediate value           |
+| ADD         | ADD R0, R1, R2    | Addition           |
+| SUB         | SUB R0, R1, R2    | Subtraction |
+| MUL         | MUL R0, R1, R2    | Multiply   |
+| LDR        | LDR R0, [R1]     | Load from memory |
+| STR     | STR R0, [R1]    | Store to memory|
+| BL   | BL function    | Branch with link    |
+| BX     | BX LR    |Return from function   |
+| CMP     |CMP R0, R1     | Compare    |
+|PUSH       |PUSH {R0-R4} | Push to stack|
+|POP        |POP {R0-R4}|Pop from stack|
