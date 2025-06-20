@@ -17,6 +17,14 @@
  */
 
 
+/******************************************************************************************************
+ *
+ * This file contains examples of using GCC-style inline assembly in C for ARM Cortex-M4 targets.
+ * It demonstrates how to read/write special registers and how to perform basic memory operations.
+ *
+ * To run a specific example, set the corresponding `#if` condition to 1.
+ *
+ *******************************************************************************************************/
 
 #include <stdint.h>
 
