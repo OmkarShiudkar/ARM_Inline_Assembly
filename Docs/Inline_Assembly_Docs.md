@@ -35,11 +35,6 @@
 | BASEPRI     | -     | Base priority mask register         |
 | CONTROL     | -     | Privilege and stack control         |
 
-### Special Register Access:
-```asm
-MRS R0, CONTROL     ; Read CONTROL into R0  
-MSR CONTROL, R1     ; Write R1 into CONTROL  
-
 ### Inline Assembly Syntax
 
 **Basic Structure - 
@@ -53,3 +48,10 @@ __asm volatile (
     : [inputs]   // "r" (c_var)
     : [clobbers] // "r0", "memory"
 );
+
+### Special Register Access:
+```asm
+MRS R0, CONTROL     ; Read CONTROL into R0  
+MSR CONTROL, R1     ; Write R1 into CONTROL  
+
+'''
